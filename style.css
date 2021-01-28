@@ -1,0 +1,40 @@
+.board {
+  --size: 500px;
+  --gap: 10px;
+  --grid: 4;
+  --tile-size: calc((var(--size) - var(--gap) * (var(--grid) - 1)) / var(--grid));
+  display: grid;
+  grid-template-columns: repeat(var(--grid), 1fr);
+  grid-template-rows: repeat(var(--grid), 1fr);
+  gap: var(--gap);
+
+  height: var(--size);
+  width: var(--size);
+  position: relative;
+}
+
+.background-tile {
+  background-color: hsl(0, 0%, 50%);
+}
+
+.tile {
+  --time: 1s;
+  --color: 100;
+  --x: 0;
+  --y: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsl(var(--color), 50%, 50%);
+  transition: all var(--time);
+
+  width: var(--tile-size);
+  height: var(--tile-size);
+
+  transform: translate(calc((var(--tile-size) + var(--gap)) * var(--x)), calc((var(--tile-size) + var(--gap)) * var(--y)));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+}
